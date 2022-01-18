@@ -31,13 +31,11 @@ class ProductController extends Controller
             'product_type' => 'required|integer',
             'price' => 'required',
         ]);
-
         $product = Product::create([
             'product_name' => $fields['product_name'],
             'product_type' => $fields['product_type'],
             'price' => $fields['price'],
         ]);
-
         $result = ['name' => 'store', 'payload' => $product];
         return $result;
     }
@@ -61,9 +59,19 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        $result = ['name' => 'update', 'payload' => $request -> all()];
+        $request -> validate([
+            'product_name' => 'required|string',
+            'product_type' => 'required|integer',
+            'price' => 'required',
+        ]);
+        $product = Product::where('product_id', $id) -> update([
+            'product_name' => $request -> input('product_name'),
+            'product_type' => $request -> input('product_type'),
+            'price' => $request -> input('price'),
+        ]);
+        $result = ['name' => 'update', 'payload' => 'Update Successed.'];
         return $result;
     }
 
@@ -75,9 +83,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::where('id', $id);
+        $product = Product::where('product_id', $id);
         $product -> delete();
-        $result = ['name' => 'destroy', 'payload' => $id];
+        $result = ['name' => 'destroy', 'payload' => 'Delete Successed.'];
         return $result;
     }
 }
