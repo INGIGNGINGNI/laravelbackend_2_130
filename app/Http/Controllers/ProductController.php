@@ -72,6 +72,7 @@ class ProductController extends Controller
             'price' => $request -> input('price'),
         ]);
         $result = ['name' => 'update', 'payload' => 'Update Successed.'];
+        // $result = ['name' => 'update', 'payload' => $product + 'Update Successed.'];
         return $result;
     }
 

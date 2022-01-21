@@ -22,26 +22,11 @@ class UserSeeder extends Seeder
                 'name' => 'Ingkamon Poolnual',
                 'email' => '622021130@tsu.ac.th',
                 'password' => Hash::make('123456'),
-                'address' => 'Thaksin University',
+                'role' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
-            [
-                'name' => 'Kanokporn Nakpin',
-                'email' => '622021094@tsu.ac.th',
-                'password' => Hash::make('223344'),
-                'address' => 'Thaksin University',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'name' => 'Naphat Keawpiban',
-                'email' => 'naphat.k@tsu.ac.th',
-                'password' => Hash::make('112234'),
-                'address' => 'Thaksin University',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
+            
         ]);
     }
 }
